@@ -1,0 +1,7 @@
+.card.selected {
+    border: 3px dashed rgb(236 72 153);
+}
+
+.card:hover {
+    border: 5px dashed rgb(236 72 153);
+}

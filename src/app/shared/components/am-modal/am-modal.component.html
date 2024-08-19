@@ -1,0 +1,30 @@
+<div
+  (click)="onBackgroundClick()"
+  class="flex items-center justify-center w-full left-0 bottom-0"
+>
+  <div class="bg-white rounded-lg w-full transition-none animate-none">
+    <div class="flex flex-col items-start p-4">
+      <div class="flex items-center w-full">
+        <div class="text-gray-900 font-medium text-lg">{{ data.title }}</div>
+
+      </div>
+      <hr />
+      <div class="my-4">
+        {{ data.message }}
+      </div>
+      <hr />
+      <div class="ml-auto flex">
+        <div class="mr-2">
+          <app-am-button buttonColor="primary">Aceptar</app-am-button>
+        </div>
+        @if (data.secondaryButtonEnabled) {
+        <div>
+          <app-am-button (click)="onCancelClick()" buttonColor="secondary"
+            >Cancelar</app-am-button
+          >
+        </div>
+        }
+      </div>
+    </div>
+  </div>
+</div>

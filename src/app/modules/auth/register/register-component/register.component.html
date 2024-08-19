@@ -1,0 +1,76 @@
+<div id="body-register" class="w-full h-full flex justify-center items-center">
+  <div
+    class="flex flex-col justify-center items-center bg-white opacity-90 shadow-lg border-2 rounded-lg w-80 h-fit p-4"
+  >
+    <h1 class="font-bold text-slate-800 text-4xl text-center my-8">
+      Nuevo registro
+    </h1>
+    <form
+    [formGroup]="registerForm"
+      class="w-full p-0 flex justify-center flex-col items-center"
+      (submit)="onSubmit($event)"
+    >
+      <div class="m-2 w-full">
+        <app-am-input
+          inputId="name"
+          inputName="name"
+          [control]="registerForm.controls['name']"
+          [inputRequired]="true"
+          placeholder="Primer nombre"
+        ></app-am-input>
+      </div>
+      <div class="m-2 w-full">
+        <app-am-input
+          inputId="surname"
+          inputName="surname"
+          [control]="registerForm.controls['surname']"
+          [inputRequired]="true"
+          placeholder="Primer apellido"
+        ></app-am-input>
+      </div>
+      <div class="m-2 w-full">
+        <app-am-input
+          inputId="email"
+          inputName="email"
+          [control]="registerForm.controls['email']"
+          [inputRequired]="true"
+          placeholder="Correo electrónico"
+        ></app-am-input>
+      </div>
+      <div class="m-2 w-full">
+        <app-am-input
+          inputId="password"
+          inputName="password"
+          [control]="registerForm.controls['password']"
+          [inputRequired]="true"
+          placeholder="Contraseña"
+        ></app-am-input>
+      </div>
+      <div class="m-2 w-full">
+        <app-am-input
+          inputId="passwordConfirm"
+          inputName="passwordConfirm"
+          [control]="registerForm.controls['passwordConfirm']"
+          [inputRequired]="true"
+          placeholder="Repita la contraseña"
+        ></app-am-input>
+      </div>
+      <div class="relative w-full">
+        <p class="absolute w-full text-center text-red-700 text-sm">
+          {{ msg }}
+        </p>
+      </div>
+      <div class="my-6 w-full">
+        <app-am-button buttonType="submit">Registrarte</app-am-button>
+      </div>
+      <p class="text-slate-600">
+        ¿Ya tienes una cuenta?
+        <a
+          class="text-pink-500 hover:underline hover:cursor-pointer"
+          (click)="goToLoginPage()"
+          >Iniciar sesión</a
+        >
+      </p>
+    </form>
+  </div>
+</div>

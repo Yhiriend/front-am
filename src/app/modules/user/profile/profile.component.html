@@ -1,0 +1,140 @@
+<div
+  id="body-settings"
+  class="w-full h-full flex justify-center items-center flex-col bg-slate-800 p-10"
+>
+  <div class="absolute right-4 top-4">
+    <app-am-button (onClick)="onLogoutClick()" buttonColor="secondary">
+      <mat-icon class="log-out-icon">output</mat-icon>Cerrar
+      sesión</app-am-button
+    >
+  </div>
+  <h1 class="font-bold text-slate-200 text-4xl text-center my-8">
+    Configurar mi Perfil
+  </h1>
+  <div
+    class="flex flex-col justify-start items-center bg-white opacity-90 shadow-lg border-2 rounded-lg w-[700px] h-4/5 p-4 overflow-y-scroll"
+  >
+    <form
+      [formGroup]="editForm"
+      class="relative w-full h-fit p-0 flex justify-center flex-col items-center"
+      (submit)="onSubmit($event)"
+    >
+      <p class="text-left text-slate-500 w-full pl-1">Datos personales</p>
+      <hr class="w-full border-slate-200 mb-1" />
+      <div class="w-full flex">
+        <div class="m-2 w-full">
+          <app-am-input
+            inputId="name"
+            inputName="name"
+            [control]="editForm.controls['name']"
+            [inputRequired]="false"
+            placeholder="Primer nombre"
+          ></app-am-input>
+        </div>
+        <div class="m-2 w-full">
+          <app-am-input
+            inputId="surname"
+            inputName="surname"
+            [control]="editForm.controls['surname']"
+            [inputRequired]="false"
+            placeholder="Primer apellido"
+          ></app-am-input>
+        </div>
+      </div>
+      <div class="w-full flex mb-4">
+        <div class="m-2 w-full">
+          <app-am-input
+            type="number"
+            inputId="age"
+            inputName="age"
+            [control]="editForm.controls['age']"
+            [inputRequired]="false"
+            placeholder="Edad"
+          ></app-am-input>
+        </div>
+        <div class="m-2 w-full">
+          <app-am-input
+            type="selector"
+            [options]="genderList"
+            inputId="gender"
+            inputName="gender"
+            [control]="editForm.controls['gender']"
+            [inputRequired]="false"
+            placeholder="Género (masculino/femenino)"
+          ></app-am-input>
+        </div>
+      </div>
+
+      <p class="text-left text-slate-500 w-full pl-1">Datos de contacto</p>
+      <hr class="w-full border-slate-200 mb-1" />
+      <div class="w-full flex">
+        <div class="m-2 w-full">
+          <app-am-input
+            inputId="phone"
+            inputName="phone"
+            [control]="editForm.controls['phone']"
+            [inputRequired]="false"
+            placeholder="Teléfono"
+          ></app-am-input>
+        </div>
+        <div class="m-2 w-full">
+          <app-am-input
+            inputId="email"
+            inputName="email"
+            [control]="editForm.controls['email']"
+            [inputRequired]="false"
+            placeholder="Correo electrónico"
+          ></app-am-input>
+        </div>
+      </div>
+
+      <div class="mt-2 mb-6 w-[97%]">
+        <app-am-input
+          inputId="address"
+          inputName="address"
+          [control]="editForm.controls['address']"
+          [inputRequired]="false"
+          placeholder="Dirección de residencia"
+        ></app-am-input>
+      </div>
+      <p class="text-left text-slate-500 w-full pl-1">Cambio de contraseña</p>
+      <hr class="w-full border-slate-200 mb-1" />
+      <div class="flex w-full">
+        <div class="m-2 w-full">
+          <app-am-input
+            inputId="password"
+            inputName="password"
+            [control]="editForm.controls['password']"
+            [inputRequired]="false"
+            placeholder="Contraseña actual"
+          ></app-am-input>
+        </div>
+        <div class="m-2 w-full">
+          <app-am-input
+            inputId="newPassword"
+            inputName="newPassword"
+            [control]="editForm.controls['newPassword']"
+            [inputRequired]="false"
+            placeholder="Nueva contraseña"
+          ></app-am-input>
+        </div>
+      </div>
+
+      <div class="relative mt-6 mb-4 w-full">
+        @if (!hasPassword) {
+        <p class="absolute w-full text-center top-[-15px] text-red-700 text-sm">
+          Ingresa tu contraseña actual
+        </p>
+        }
+        <div class="w-full mt-4">
+          <app-am-button buttonType="submit">Guardar cambios</app-am-button>
+        </div>
+      </div>
+      <div class="w-full">
+        <app-am-button (onClick)="onCancelEditing()" buttonColor="secondary"
+          >Cancelar</app-am-button
+        >
+      </div>
+    </form>
+  </div>
+</div>

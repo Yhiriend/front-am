@@ -1,0 +1,55 @@
+<div
+  class="relative bg-slate-950 p-10 h-screen flex justify-evenly items-center"
+>
+  <div class="absolute top-10 left-10">
+    <app-am-button buttonColor="secondary" (onClick)="goToActivity()"
+      >Salir de la Actividad</app-am-button
+    >
+  </div>
+  <div
+    class="left-20 top-[20%] border-2 border-pink-600 w-[250px] h-fit rounded-lg p-4 flex flex-col justify-start"
+  >
+    @if (activityName === 'LABERINTO DE ZEN') {
+    <h1 class="text-slate-300 text-center">{{ activityName }}</h1>
+    <hr class="my-2" />
+    <h1 class="text-slate-300">Objetivo: Que no se te acabe el tiempo</h1>
+    <h1 class="text-slate-300">Puntuación: {{ points }}</h1>
+
+    } @else if (activityName === "ARMONÍA DEL COLOR") {
+    <h1 class="text-slate-300 text-center">{{ activityName }}</h1>
+    <hr class="my-2" />
+    <h1 class="text-slate-300">Objetivo: más de {{ targetPoints }} puntos</h1>
+
+    <h1 class="text-slate-300">Puntuación actual: {{ points }}</h1>
+    } @else {
+    <h1 class="text-slate-300 text-center">{{ activityName }}</h1>
+    <hr class="my-2" />
+    <h1 class="text-slate-300">Objetivo: {{ targetMoves }} movs</h1>
+    <h1 class="text-slate-300">Objetivo: {{ targetPoints }} puntos</h1>
+
+    <h1 class="text-slate-300">Total actuales: {{ totalMoves }} movs</h1>
+    <h1 class="text-slate-300">Puntuación: {{ points }}</h1>
+    }
+  </div>
+  <div
+    #container
+    class="rounded-lg shadow-inner min-h-[570px] h-[570px] min-w-[600px] w-[600px] bg-slate-700 p-5 overflow-hidden"
+  >
+    @if (activityName === 'LABERINTO DE ZEN') {
+    <app-laberinto-zen
+      (puntuacionEmitted)="handlePuntuacion($event)"
+    ></app-laberinto-zen>
+
+    } @else if (activityName === "ARMONÍA DEL COLOR") {
+    <app-color-memory
+      (puntuacionEmitted)="handlePuntuacion($event)"
+    ></app-color-memory>
+    } @else {
+    <app-memory (emitMoves)="receiveMoves($event)">
+      <ng-template #customTemplate>
+        <!-- ng-container -->
+      </ng-template>
+    </app-memory>
+    }
+  </div>
+</div>

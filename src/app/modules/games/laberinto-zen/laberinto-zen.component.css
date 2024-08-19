@@ -1,0 +1,31 @@
+.maze-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.cell {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #ccc;
+}
+
+.wall {
+    background-color: black;
+}
+
+.path {
+    background-color: white;
+}
+
+.cell.start {
+    background-color: aquamarine;
+}
+
+.cell.finish {
+    background-color: chartreuse;
+}
+
+.player {
+    background-color: blue;
+    border-radius: 50%;
+}

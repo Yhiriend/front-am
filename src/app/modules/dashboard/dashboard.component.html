@@ -1,0 +1,49 @@
+<div id="body-dashboard" class="relative flex flex-col justify-center items-center h-screen bg-slate-800 overflow-auto">
+
+  <div class="absolute right-4 top-4">
+    <app-am-button (onClick)="onLogoutClick()" buttonColor="secondary"> <mat-icon class="log-out-icon">output</mat-icon>Cerrar sesión</app-am-button>
+  </div>
+
+  <div
+    class="relative w-96 rounded-xl shadow-xl bg-slate-900/60 border-2 flex flex-col justify-evenly items-center backdrop-blur-sm"
+  >
+
+    <div
+      class="relative rounded-full border-4 flex justify-center items-center bg-slate-300 w-[200px] h-[200px] mt-20 mb-4 p-0"
+    >
+    @if (userImage) {
+      <img
+        src={{userImage}}
+        alt="badge that represents the user's progress"
+        class="w-[200px] h-[200px] object-cover"
+      />
+    }@else {
+      <div class="w-[200px] h[200px] bg-gray-400"></div>
+    }
+
+      <div (click)="onSettingsClick()" class="shadow-md flex justify-center items-center bottom-4 right-2 w-[30px] h-[30px] rounded-full border-2 border-slate-700 bg-slate-50 absolute hover:cursor-pointer hover:scale-[1.05]">
+        <mat-icon class="color-icon">settings</mat-icon>
+      </div>
+    </div>
+    <div class="flex p-6 flex-col items-center">
+      <p class="text-slate-50">Progreso</p>
+      <div #progressBar class="mt-4 w-80 h-4 rounded-lg bg-gray-500">
+      </div>
+    </div>
+
+    <hr class="w-80 mb-4 border-slate-500" />
+
+    <div class="flex flex-col items-center justify-center">
+      <h2 class="text-slate-50">{{ fullname }}</h2>
+      <p class="text-slate-500 font-light">{{ email }}</p>
+    </div>
+
+    <hr class="w-80 mt-4 border-slate-500" />
+    <div class="mt-8">
+      <app-am-button (onClick)="goToActivities()">Explorar actividades</app-am-button>
+    </div>
+
+    <div class="h-20"></div>
+  </div>
+</div>
+
