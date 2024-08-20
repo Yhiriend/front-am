@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { selectIsLoading } from './modules/auth/auth-state/auth.selectors';
+import { AmToastComponent } from './shared/components/am-toast/am-toast.component';
 
 @Component({
   selector: 'app-root',
@@ -19,6 +20,7 @@ import { selectIsLoading } from './modules/auth/auth-state/auth.selectors';
     SharedModule,
     LoginComponent,
     FormsModule,
+    AmToastComponent,
   ],
 })
 export class AppComponent implements OnInit {

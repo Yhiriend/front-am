@@ -11,6 +11,17 @@ import { UserProgress } from '../../models/userprogress';
 export class UserService {
   constructor(private http: HttpClient) {}
 
+  getOptions(token: string) {
+    return {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin':
+          'https://back-am-production.up.railway.app',
+        Authorization: `Bearer ${token}`,
+      }),
+    };
+  }
+
   update(
     user: User,
     newPassword: string | null,
@@ -18,13 +29,7 @@ export class UserService {
   ): Observable<any> {
     const body = { user, newPassword };
 
-    const options = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': 'http://localhost:4200',
-        Authorization: `Bearer ${token}`,
-      }),
-    };
+    const options = this.getOptions(token);
 
     return this.http.post(`${environment.users}/update`, body, options).pipe(
       map((response: any) => response),
@@ -36,13 +41,7 @@ export class UserService {
 
   getProgress(id: number, token: string): Observable<any> {
     const body = { id };
-    const options = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': 'http://localhost:4200',
-        Authorization: `Bearer ${token}`,
-      }),
-    };
+    const options = this.getOptions(token);
     return this.http
       .post(`${environment.acitivity}/progress/general`, body, options)
       .pipe(
@@ -56,13 +55,7 @@ export class UserService {
   getActivities(id: number, token: string): Observable<any> {
     const body = { id };
 
-    const options = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': 'http://localhost:4200',
-        Authorization: `Bearer ${token}`,
-      }),
-    };
+    const options = this.getOptions(token);
 
     return this.http
       .post(`${environment.acitivity}/get-by-user`, body, options)
@@ -77,35 +70,25 @@ export class UserService {
   updateProgress(progress: UserProgress, token: string): Observable<any> {
     const body = progress;
 
-    const options = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': 'http://localhost:4200',
-        Authorization: `Bearer ${token}`,
-      }),
-    };
-    return this.http.post(`${environment.acitivity}/progress/update`, body, options).pipe(
-      map((response: any) => response),
+    const options = this.getOptions(token);
+    return this.http
+      .post(`${environment.acitivity}/progress/update`, body, options)
+      .pipe(
+        map((response: any) => response),
         catchError((error: any) => {
           throw error;
         })
-    )
+      );
   }
 
-  getActivityById(id: number, token: string): Observable<any>{
-    const body = {id}
-    const options = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': 'http://localhost:4200',
-        Authorization: `Bearer ${token}`,
-      }),
-    };
+  getActivityById(id: number, token: string): Observable<any> {
+    const body = { id };
+    const options = this.getOptions(token);
     return this.http.post(`${environment.acitivity}/get`, body, options).pipe(
       map((response: any) => response),
-        catchError((error: any) => {
-          throw error;
-        })
-    )
+      catchError((error: any) => {
+        throw error;
+      })
+    );
   }
 }
