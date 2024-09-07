@@ -1,0 +1,10 @@
+{
+  "routes": [
+    "/activity",
+    "/activity/game-launcher",
+    "/dashboard",
+    "/login",
+    "/register",
+    "/settings"
+  ]
+}
