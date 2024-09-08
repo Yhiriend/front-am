@@ -1,0 +1,15 @@
+<div class="maze-container flex justify-center items-center">
+  <div *ngFor="let row of maze; let i = index" class="flex">
+    <div
+      *ngFor="let cell of row; let j = index"
+      [ngClass]="{
+        wall: cell === 1,
+        path: cell === 0,
+        start: cell === 2,
+        finish: cell === 3,
+        player: i === playerPosition.x && j === playerPosition.y
+      }"
+      class="cell"
+    ></div>
+  </div>
+</div>

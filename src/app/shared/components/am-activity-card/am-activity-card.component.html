@@ -1,0 +1,22 @@
+<div
+  (click)="emitOnclick()"
+  class="flex flex-col justify-evenly items-center w-52 h-52 rounded-lg p-4 bg-slate-50 shadow-lg hover:scale-[1.05] hover:cursor-pointer transition-all"
+>
+  <h1 class="text-center text-slate-800 font-bold">
+    {{ truncateText(activityname, 3) }}
+  </h1>
+  <p class="text-center text-slate-500">
+    Niveles completados {{ completed }}/{{ total }}
+  </p>
+  <div class="w-full flex justify-between">
+    <p class="text-left">Progreso</p>
+    <p class="text-right">{{ progress }}%</p>
+  </div>
+
+  <div class="rounded-lg w-full h-2 bg-gray-500">
+    <div
+      class="h-full rounded-lg bg-green-500"
+      [style.width.%]="progress"
+    ></div>
+  </div>
+</div>

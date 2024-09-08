@@ -1,0 +1,15 @@
+<button
+  [ngClass]="getButtonClass()"
+  (mousedown)="onMouseDown()"
+  (mouseup)="onMouseUp()"
+  [attr.type]="buttonType ? buttonType : 'button'"
+  [disabled]="isLoading$ | async"
+  (click)="emitOnclick()"
+  class="flex justify-center items-center h-[40px]"
+>
+  @if (isLoading$ | async) {
+    <div class="loader"></div>
+   } @else {
+  <ng-content></ng-content>
+  }
+</button>

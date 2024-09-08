@@ -1,0 +1,25 @@
+<!-- am-toast.component.html -->
+<div
+  class="fixed bottom-4 right-4 w-96 h-16 flex rounded-lg p-1 toast-container"
+  [ngClass]="toastClass"
+  *ngIf="visible"
+>
+  <div class="w-14 h-full flex items-center justify-center">
+    <mat-icon
+      class="text-3xl text-center pt-1 min-h-full min-w-full"
+      [ngClass]="iconClass"
+      >{{ icon }}</mat-icon
+    >
+  </div>
+  <div class="w-full h-full">
+    <div class="w-full h-1/2 flex justify-between">
+      <p class="text-sm font-bold pt-2" [ngClass]="titleClass">{{ title }}</p>
+      <div class="w-6 h-full">
+        <mat-icon class="cursor-pointer" (click)="closeToast()">clear</mat-icon>
+      </div>
+    </div>
+    <div class="w-full h-1/2">
+      <p class="text-gray-700 text-xs m-0">{{ message }}</p>
+    </div>
+  </div>
+</div>

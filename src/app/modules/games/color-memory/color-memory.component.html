@@ -1,0 +1,49 @@
+<div
+  class="flex flex-col items-center justify-center min-h-full bg-gray-700 text-white"
+>
+  <!-- Cartas que muestran colores inicialmente -->
+  <div
+    *ngIf="!isGuessing"
+    class="relative grid grid-cols-5 gap-4 mb-8 border-2 border-gray-500 p-4"
+  >
+    <p class="absolute -top-6 left-4 bg-slate-700 p-2 m-0">
+      Memoriza estos colores
+    </p>
+    <div
+      *ngFor="let color of colorSequence"
+      [ngStyle]="{ 'background-color': color.colorCode }"
+      class="w-16 h-16 rounded-md"
+    ></div>
+  </div>
+
+  <!-- Cartas blancas para seleccionar color -->
+  <div *ngIf="isGuessing" class="grid grid-cols-5 gap-4 mb-8">
+    <div
+      *ngFor="let color of guessedSequence; let i = index"
+      [ngStyle]="{ 'background-color': color.colorCode }"
+      class="card w-16 h-16 rounded-md cursor-pointer"
+      [ngClass]="{ selected: selectedCardIndex === i }"
+      (click)="selectCard(i)"
+    ></div>
+  </div>
+
+  <!-- Paleta de colores -->
+  <div
+    *ngIf="isGuessing"
+    class="relative grid grid-cols-5 gap-4 mb-8 border-2 border-gray-500 p-4"
+  >
+    <p class="absolute -top-6 left-4 bg-slate-700 p-2 m-0">Paleta de colores</p>
+    <div
+      *ngFor="let color of colors"
+      [ngStyle]="{ 'background-color': color.colorCode }"
+      class="w-16 h-16 rounded-md cursor-pointer"
+      (click)="selectColor(color)"
+    ></div>
+  </div>
+
+  <!-- Botón de verificación -->
+  <app-am-button *ngIf="isGuessing" (onClick)="checkSequence()"
+    >Check</app-am-button
+  >
+  <h1 *ngIf="!isGuessing" class="text-3xl">{{ counter }}</h1>
+</div>

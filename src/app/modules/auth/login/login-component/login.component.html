@@ -1,0 +1,48 @@
+<div id="body-login" class="w-full h-full flex justify-center items-center">
+  <div
+    class="flex flex-col justify-center items-center bg-white opacity-90 shadow-lg border-2 rounded-lg w-72 h-fit p-4"
+  >
+    <h1 class="font-bold text-slate-800 text-4xl text-center my-8">
+      App-Web Better Cognition
+    </h1>
+    <form
+      [formGroup]="loginForm"
+      class="w-full p-0 flex justify-center flex-col items-center"
+      (submit)="onSubmitLogin($event)"
+    >
+      <div class="m-2 w-full">
+        <app-am-input
+          inputId="email"
+          inputName="email"
+          [inputRequired]="true"
+          [control]="loginForm.controls['email']"
+          placeholder="Correo electrónico"
+        ></app-am-input>
+      </div>
+      <div class="m-2 w-full">
+        <app-am-input
+          inputId="password"
+          inputName="password"
+          [control]="loginForm.controls['password']"
+          [inputRequired]="true"
+          placeholder="Contraseña"
+        ></app-am-input>
+      </div>
+      <div class="relative w-full">
+        <p class="absolute w-full text-center text-red-700 text-sm">{{ invalidMessage$ | async }}</p>
+      </div>
+      <div class="my-6 w-full">
+        <app-am-button buttonType="submit">Iniciar sesión</app-am-button>
+      </div>
+
+      <p class="text-slate-600">
+        ¿No tienes una cuenta?
+        <a
+          class="text-pink-500 hover:underline hover:cursor-pointer"
+          (click)="goToRegisterPage()"
+          >Regístrate</a
+        >
+      </p>
+    </form>
+  </div>
+</div>
