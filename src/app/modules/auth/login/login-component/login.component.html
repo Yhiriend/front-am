@@ -3,7 +3,7 @@
     class="flex flex-col justify-center items-center bg-white opacity-90 shadow-lg border-2 rounded-lg w-72 h-fit p-4"
   >
     <h1 class="font-bold text-slate-800 text-4xl text-center my-8">
-      App-Web Better Cognition
+      Memory-Play
     </h1>
     <form
       [formGroup]="loginForm"
@@ -29,7 +29,9 @@
         ></app-am-input>
       </div>
       <div class="relative w-full">
-        <p class="absolute w-full text-center text-red-700 text-sm">{{ invalidMessage$ | async }}</p>
+        <p class="absolute w-full text-center text-red-700 text-sm">
+          {{ invalidMessage$ | async }}
+        </p>
       </div>
       <div class="my-6 w-full">
         <app-am-button buttonType="submit">Iniciar sesión</app-am-button>
